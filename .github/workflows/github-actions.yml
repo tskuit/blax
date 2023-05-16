@@ -1,0 +1,16 @@
+name: GitHub Actions Blax
+run-name: ${{ github.actor }} is blaxing 
+on: [push]
+jobs:
+  Blax-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Event ${{ github.event_name }}. Server ${{ runner.os }}."
+      - run: echo "Branch ${{ github.ref }}. Repository ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "Job's status ${{ job.status }}."
+
