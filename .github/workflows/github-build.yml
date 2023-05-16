@@ -1,4 +1,5 @@
 name: Publish Docker image
+run-name: builder is building
 on:
   [push]
 jobs:
