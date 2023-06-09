@@ -14,14 +14,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: 'blax-a/'
-          ref: 'v0.0.1'
+          ref: 'v0.0.2'
           repository: 'tskuit/blax-a'
 
       - name: Checkout blax-b repo
         uses: actions/checkout@v3
         with:
           path: 'blax-b/'
-          ref: 'v0.0.1'
+          ref: 'v0.0.2'
           repository: 'tskuit/blax-b'
 
 
