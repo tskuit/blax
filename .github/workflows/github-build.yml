@@ -1,7 +1,9 @@
 name: Publish Docker image
 run-name: builder is building
 on:
-  [push]
+  push:
+    tags: [ 'v[0-9]+.[0-9]+.[0-9]+' ]
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -10,18 +12,23 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: GitHub Tag Name
+        run: |
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+
       - name: Checkout blax-a repo
         uses: actions/checkout@v3
         with:
           path: 'blax-a/'
-          ref: 'v0.0.2'
+          ref: 'v0.0.1'
           repository: 'tskuit/blax-a'
 
       - name: Checkout blax-b repo
         uses: actions/checkout@v3
         with:
           path: 'blax-b/'
-          ref: 'v0.0.2'
+          ref: 'v0.0.1'
           repository: 'tskuit/blax-b'
 
 
